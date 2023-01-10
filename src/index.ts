@@ -17,15 +17,12 @@ const db = new Database("/home/mydb.sqlite");
 app.get("/", async (ctx) => {
   let t1 = Date.now()
   let rs = await db.query("SELECT * FROM foo").all();
-//   return JSON.stringify(rs)
-//   return ctx.sendJson({data: rs, ms: Date.now() - t1});
   return ctx.sendJson({ rs: rs, ms: Date.now() - t1 })
-//   return ctx.sendText("Hello world from Bao.js running on Railway!" + Date.now());
 });
 
 app.get("/add", async (ctx) => {
-  let rs = await db.run("INSERT INTO foo VALUES (?)", "Hello World! " + Date.now());
-  return JSON.stringify(rs)
+  db.run("INSERT INTO foo VALUES (?)", "Hello World! " + Date.now());
+  return ctx.sendText("OK: " + Date.now());
 })
 
 const server = app.listen({ port: port });
