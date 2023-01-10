@@ -7,11 +7,11 @@ import { Database } from "bun:sqlite";
 
 const db = new Database("/home/mydb.sqlite");
 
-db.run(
-  "CREATE TABLE IF NOT EXISTS foo (id INTEGER PRIMARY KEY AUTOINCREMENT, greeting TEXT)",
-);
-db.run("INSERT INTO foo (greeting) VALUES (?)", "Welcome to bun!");
-db.run("INSERT INTO foo (greeting) VALUES (?)", "Hello World!");
+// db.run(
+//   "CREATE TABLE IF NOT EXISTS foo (id INTEGER PRIMARY KEY AUTOINCREMENT, greeting TEXT)",
+// );
+// db.run("INSERT INTO foo (greeting) VALUES (?)", "Welcome to bun!");
+// db.run("INSERT INTO foo (greeting) VALUES (?)", "Hello World!");
 
 
 app.get("/", async (ctx) => {
@@ -22,6 +22,11 @@ app.get("/", async (ctx) => {
   return ctx.sendJson({ rs: rs, ms: Date.now() - t1 })
 //   return ctx.sendText("Hello world from Bao.js running on Railway!" + Date.now());
 });
+
+app.get("/add", async (ctx) => {
+  let rs = await db.run("INSERT INTO foo VALUES (?)", "Hello World! " + Date.now());
+  return JSON.stringify(rs)
+})
 
 const server = app.listen({ port: port });
 console.log(`Server listening on ${server.hostname}:${port}`);
