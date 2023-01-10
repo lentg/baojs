@@ -5,7 +5,7 @@ const port = parseInt(process.env.PORT || "8080");
 
 import { Database } from "bun:sqlite";
 
-const db = new Database("mydb.sqlite");
+const db = new Database("/usr/src/mydb.sqlite");
 
 db.run(
   "CREATE TABLE IF NOT EXISTS foo (id INTEGER PRIMARY KEY AUTOINCREMENT, greeting TEXT)",
