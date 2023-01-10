@@ -5,12 +5,12 @@ FROM jarredsumner/bun:edge
 # Copy everything from here into Docker's /usr/src/app
 RUN mkdir -p /db
 
-COPY /usr/src/mydb.sqlite /db
+COPY /usr/src/mydb.sqlite /db/mydb.sqlite
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
-COPY /db/mydb.sqlite /usr/src
+COPY /db/mydb.sqlite /usr/src/mydb.sqlite
 
 # RUN mkdir -p /db
 # VOLUME ["/db"]
