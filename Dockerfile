@@ -7,6 +7,7 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 
 RUN mkdir -p /db
+VOLUME ["/db"]
 
 # Install the dependencies (Bao.js)
 RUN bun install
