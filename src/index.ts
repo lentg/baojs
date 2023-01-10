@@ -20,10 +20,10 @@ app.get("/", async (ctx) => {
   return ctx.sendJson({ rs: rs, ms: Date.now() - t1 })
 });
 
-app.get("/add", async (ctx) => {
-  db.run("INSERT INTO foo VALUES (?)", "Hello World! " + Date.now());
-  return ctx.sendText("OK: " + Date.now());
-})
+// app.get("/add", async (ctx) => {
+//   db.run("INSERT INTO foo VALUES (?)", "Hello World! " + Date.now());
+//   return ctx.sendText("OK: " + Date.now());
+// })
 
 const server = app.listen({ port: port });
 console.log(`Server listening on ${server.hostname}:${port}`);
