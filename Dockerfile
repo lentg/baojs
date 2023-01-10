@@ -6,6 +6,8 @@ FROM jarredsumner/bun:edge
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
+RUN mkdir -p /db
+
 # Install the dependencies (Bao.js)
 RUN bun install
 
