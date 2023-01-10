@@ -3,8 +3,14 @@ FROM jarredsumner/bun:edge
 
 # Set the Docker working directory as /usr/src/app
 # Copy everything from here into Docker's /usr/src/app
+RUN mkdir -p /db
+
+COPY /usr/src/mydb.sqlite /db
+
 WORKDIR /usr/src/app
 COPY . /usr/src/app
+
+COPY /dbb/mydb.sqlite /usr/src
 
 # RUN mkdir -p /db
 # VOLUME ["/db"]
