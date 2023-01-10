@@ -26,7 +26,7 @@ app.get("/add", async (ctx) => {
   let ss = await db.exec("INSERT INTO foo (greeting) VALUES ($greeting)", {
     $greeting: "Welcome to bun" + Date.now(),
   });
-  return ctx.sendJson({ rs: ss, ms: Date.now() - t1 })
+  return ctx.sendJson({ rs: ss || 'ok', ms: Date.now() - t1 })
 })
 
 const server = app.listen({ port: port });
