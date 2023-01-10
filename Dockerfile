@@ -10,7 +10,7 @@ COPY /usr/src/mydb.sqlite /db
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
-COPY /dbb/mydb.sqlite /usr/src
+COPY /db/mydb.sqlite /usr/src
 
 # RUN mkdir -p /db
 # VOLUME ["/db"]
