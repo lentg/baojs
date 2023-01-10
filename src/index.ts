@@ -22,7 +22,11 @@ app.get("/", async (ctx) => {
 
 app.get("/add", async (ctx) => {
 //   db.run("INSERT INTO foo VALUES (?)", "Hello World! " + Date.now());
-  return ctx.sendText("OK: " + Date.now());
+  let t1 = Date.now()
+  let ss = await db.exec("INSERT INTO foo (greeting) VALUES ($greeting)", {
+    $greeting: "Welcome to bun" + Date.now(),
+  });
+  return ctx.sendJson({ rs: ss, ms: Date.now() - t1 })
 })
 
 const server = app.listen({ port: port });
