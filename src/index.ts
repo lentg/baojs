@@ -16,7 +16,7 @@ db.run("INSERT INTO foo (greeting) VALUES (?)", "Hello World!");
 
 app.get("/", async (ctx) => {
   let rs = await db.query("SELECT * FROM foo").all();
-  return json.stringify(rs)
+  return JSON.stringify(rs)
 //   return ctx.sendText("Hello world from Bao.js running on Railway!" + Date.now());
 });
 
