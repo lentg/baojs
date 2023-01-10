@@ -3,8 +3,21 @@ import Bao from "baojs";
 const app = new Bao();
 const port = parseInt(process.env.PORT || "8080");
 
-app.get("/", (ctx) => {
-  return ctx.sendText("Hello world from Bao.js running on Railway!" + Date.now());
+import { Database } from "bun:sqlite";
+
+const db = new Database("mydb.sqlite");
+
+db.run(
+  "CREATE TABLE IF NOT EXISTS foo (id INTEGER PRIMARY KEY AUTOINCREMENT, greeting TEXT)",
+);
+db.run("INSERT INTO foo (greeting) VALUES (?)", "Welcome to bun!");
+db.run("INSERT INTO foo (greeting) VALUES (?)", "Hello World!");
+
+
+app.get("/", async (ctx) => {
+  let rs = await db.query("SELECT * FROM foo").all();
+  return json.stringify(rs)
+//   return ctx.sendText("Hello world from Bao.js running on Railway!" + Date.now());
 });
 
 const server = app.listen({ port: port });
