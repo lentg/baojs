@@ -5,6 +5,7 @@ FROM jarredsumner/bun:edge
 # Copy everything from here into Docker's /usr/src/app
 WORKDIR /usr/src/app
 COPY . /usr/src/app
+VOLUME ["volume01","volume02"]
 
 # RUN mkdir -p /db
 # VOLUME ["/db"]
