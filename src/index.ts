@@ -7,11 +7,11 @@ import { Database } from "bun:sqlite";
 
 const db = new Database("mydb.sqlite");
 
-// db.run(
-//   "CREATE TABLE IF NOT EXISTS foo (id INTEGER PRIMARY KEY AUTOINCREMENT, greeting TEXT)",
-// );
-// db.run("INSERT INTO foo (greeting) VALUES (?)", "Welcome to bun!");
-// db.run("INSERT INTO foo (greeting) VALUES (?)", "Hello World!");
+db.run(
+  "CREATE TABLE IF NOT EXISTS foo (id INTEGER PRIMARY KEY AUTOINCREMENT, greeting TEXT)",
+);
+db.run("INSERT INTO foo (greeting) VALUES (?)", "Welcome to bun!");
+db.run("INSERT INTO foo (greeting) VALUES (?)", "Hello World!");
 
 
 app.get("/", async (ctx) => {
