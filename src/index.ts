@@ -21,7 +21,7 @@ app.get("/", async (ctx) => {
 });
 
 app.get("/add", async (ctx) => {
-  db.run("INSERT INTO foo VALUES (?)", "Hello World! " + Date.now());
+//   db.run("INSERT INTO foo VALUES (?)", "Hello World! " + Date.now());
   return ctx.sendText("OK: " + Date.now());
 })
 
